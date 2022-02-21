@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/frameworkTeam-test-gallery/static/css/main.1b9879d1.css",
-    "main.js": "/frameworkTeam-test-gallery/static/js/main.976b3a52.js",
+    "main.js": "/frameworkTeam-test-gallery/static/js/main.b37d462c.js",
     "index.html": "/frameworkTeam-test-gallery/index.html",
     "main.1b9879d1.css.map": "/frameworkTeam-test-gallery/static/css/main.1b9879d1.css.map",
-    "main.976b3a52.js.map": "/frameworkTeam-test-gallery/static/js/main.976b3a52.js.map"
+    "main.b37d462c.js.map": "/frameworkTeam-test-gallery/static/js/main.b37d462c.js.map"
   },
   "entrypoints": [
     "static/css/main.1b9879d1.css",
-    "static/js/main.976b3a52.js"
+    "static/js/main.b37d462c.js"
   ]
 }
