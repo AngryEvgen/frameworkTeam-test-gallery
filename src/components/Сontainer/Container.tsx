@@ -1,7 +1,8 @@
-import React, { FC, useState, useEffect, useMemo } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import classNames from 'classnames/bind';
 import containerStore from '../../store/containerStore';
+import { useSearchParams } from 'react-router-dom';
 import { useWindowDimensions } from '../../hooks';
 import { Filters, IRange } from '../../types';
 import { Logo } from '../images';
@@ -23,6 +24,7 @@ export const Container: FC = observer(() => {
   });
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [paintingsPerPage, setPaintingsPerPage] = useState<number>(6);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const indexOfLastPainting = currentPage * paintingsPerPage;
   const indexOfFirstPainting = indexOfLastPainting - paintingsPerPage;
@@ -58,6 +60,15 @@ export const Container: FC = observer(() => {
   };
 
   useEffect(() => {
+    if (localStorage.getItem('darkTheme')) {
+      setIsDark(JSON.parse(localStorage.getItem('darkTheme') as string));
+    }
+    containerStore.fetchPaintings();
+    containerStore.fetchAuthors();
+    containerStore.fetchLocations();
+  }, []);
+
+  useEffect(() => {
     let filtersParametrs = [];
 
     if (filters.name.length > 1) {
@@ -75,22 +86,19 @@ export const Container: FC = observer(() => {
       );
     }
 
+    if (searchParams.toString().length > 0) {
+      containerStore.fetchByFilters(searchParams.toString());
+    }
+
     if (filtersParametrs.length > 0) {
       containerStore.fetchByFilters(filtersParametrs.join('&'));
     } else {
       containerStore.fetchPaintings();
     }
-  }, [filters]);
 
-  useEffect(() => {
-    if (localStorage.getItem('darkTheme')) {
-      setIsDark(JSON.parse(localStorage.getItem('darkTheme') as string));
-    }
-    console.log(window.innerWidth);
-    containerStore.fetchPaintings();
-    containerStore.fetchAuthors();
-    containerStore.fetchLocations();
-  }, []);
+    const params = new URLSearchParams(filtersParametrs.join('&'));
+    setSearchParams(params);
+  }, [filters]);
 
   useEffect(() => {
     localStorage.setItem('darkTheme', JSON.stringify(isDark));
