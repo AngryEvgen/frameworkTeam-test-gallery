@@ -1,0 +1,31 @@
+@mixin for-fonts {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-style: normal;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin _768 {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin _1024 {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin _1366 {
+  @media (min-width: 1366px) {
+    @content;
+  }
+}

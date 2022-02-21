@@ -1,0 +1,88 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.pagination,
+.button {
+  @include flex-center;
+}
+
+.button,
+.buttonActive {
+  border: $border;
+}
+
+.button,
+.buttonDarkActive {
+  background: $backgroundColor;
+}
+
+.buttonActive,
+.buttonDark {
+  background: $backgroundColorDark;
+  color: $fontColorDark;
+}
+
+.buttonDark,
+.buttonDarkActive {
+  border: $borderDark;
+}
+
+.pagination {
+  width: 280px;
+
+  .button {
+    height: 41px;
+    width: 41px;
+    border-right: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    transition: $transition;
+  }
+
+  .buttonDisabled {
+    color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .button:hover:not(.buttonActive, .buttonDisabled) {
+    background: #ededed;
+  }
+
+  .button:first-child {
+    border-radius: 8px 0 0 8px;
+  }
+
+  .button:last-child {
+    border-right: $border;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .button:last-child.buttonDisabled {
+    border-right-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .buttonDarkActive {
+    color: $fontColor;
+    background: $backgroundColor;
+  }
+
+  .buttonDarkDisabled {
+    color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .buttonDark:hover:not(.buttonDarkActive, .buttonDarkDisabled) {
+    background: #464646;
+  }
+
+  .buttonDark:last-child {
+    border-right: $borderDark;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .buttonDark:last-child.buttonDarkDisabled {
+    border-right-color: rgba(255, 255, 255, 0.3);
+  }
+}

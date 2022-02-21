@@ -1,0 +1,1 @@
+export { ThemeChangeIcon } from './ThemeChangeIcon';

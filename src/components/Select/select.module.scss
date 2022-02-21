@@ -1,0 +1,163 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.select,
+.button {
+  position: relative;
+}
+
+.select,
+.clear {
+  justify-content: center;
+}
+
+.select,
+.button,
+.clear {
+  display: flex;
+  align-items: center;
+}
+
+.select,
+.button,
+.content {
+  width: 100%;
+}
+
+.button,
+.content {
+  background: $backgroundColor;
+  border: $border;
+}
+
+.button,
+.arrow,
+.option {
+  transition: $transition;
+}
+
+.arrow,
+.arrowDark {
+  border-top: 6px solid rgba(0, 0, 0, 0.3);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+
+.buttonValue,
+.option {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.button,
+.option {
+  cursor: pointer;
+}
+
+.buttonDark,
+.contentDark {
+  background: $backgroundColorDark;
+}
+
+.buttonDark,
+.contentDark {
+  border: $borderDark;
+}
+
+.buttonDark,
+.contentDark {
+  color: $fontColorDark;
+}
+
+.select {
+  .button {
+    outline: none;
+    justify-content: space-between;
+    height: $filtersHeight;
+    border-radius: $borderRadius;
+
+    &Value {
+      justify-self: flex-start;
+      font-weight: bold;
+      font-size: 13px;
+      line-height: 15px;
+      padding: 0 10px 0 15px;
+    }
+
+    .clear {
+      justify-content: center;
+      justify-self: flex-end;
+      padding-right: 20px;
+    }
+
+    .arrow {
+      justify-self: flex-end;
+      margin-right: 15px;
+    }
+
+    .arrowActive {
+      transform: rotate(180deg);
+    }
+
+    .arrowDark {
+      border-top-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .buttonActive {
+    border-radius: 8px 8px 0 0;
+    border-bottom: none;
+  }
+
+  .buttonDarkActive {
+    border-bottom: none;
+  }
+
+  .content {
+    position: absolute;
+    max-height: 478px;
+    overflow: auto;
+    top: 100%;
+    padding: 10px 0;
+    border-top-color: rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 8px 8px;
+    visibility: hidden;
+
+    .optionList {
+      list-style-type: none;
+    }
+
+    .option {
+      @include _768 {
+        text-indent: 15px;
+      }
+      @include _1024 {
+        text-indent: 22px;
+      }
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 40px;
+      text-indent: 30px;
+    }
+
+    .option:hover {
+      color: $fontColorDark;
+      background: $backgroundColorDark;
+    }
+  }
+
+  .contentActive {
+    visibility: visible;
+    z-index: 9999;
+  }
+
+  .contentDark {
+    border-top-color: rgba(255, 255, 255, 0.3);
+
+    .optionDark:hover {
+      color: $fontColor;
+      background: $fontColorDark;
+    }
+  }
+}

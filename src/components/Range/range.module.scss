@@ -1,0 +1,152 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.range,
+.button,
+.content,
+.from,
+.before {
+  width: 100%;
+}
+
+.range,
+.button {
+  position: relative;
+}
+
+.range,
+.button,
+.clear,
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button,
+.content {
+  background-color: $backgroundColor;
+  border: $border;
+}
+
+.button,
+.from,
+.before {
+  border-radius: $borderRadius;
+  outline: none;
+  height: $filtersHeight;
+}
+
+.buttonValue,
+.from,
+.before {
+  font-size: 13px;
+  line-height: 15px;
+}
+
+.button,
+.arrow {
+  transition: $transition;
+}
+
+.arrow,
+.arrowDark {
+  border-top: 6px solid rgba(0, 0, 0, 0.3);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+
+.buttonDark,
+.contentDark {
+  background: $backgroundColorDark;
+  border: $borderDark;
+  color: $fontColorDark;
+}
+
+.fromDark,
+.beforeDark {
+  background: $backgroundColorDark;
+}
+
+.range {
+  .button {
+    cursor: pointer;
+    justify-content: space-between;
+
+    .buttonValue {
+      justify-self: flex-start;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-weight: bold;
+      padding: 0 10px 0 15px;
+    }
+
+    .clear {
+      justify-self: flex-end;
+      padding-right: 20px;
+    }
+
+    .arrow {
+      justify-self: flex-end;
+      margin-right: 15px;
+    }
+
+    .arrowActive {
+      transform: rotate(180deg);
+    }
+
+    .arrowDark {
+      border-top-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .buttonActive {
+    border-radius: 8px 8px 0 0;
+    border-bottom: none;
+  }
+
+  .buttonDarkActive {
+    border-bottom: none;
+  }
+
+  .content {
+    @include _768 {
+      @include flex-column;
+    }
+    @include _1366 {
+      flex-direction: row;
+    }
+    position: absolute;
+    max-height: 130px;
+    top: 100%;
+    border-radius: 0 0 8px 8px;
+    border-top: none;
+    padding: 20px 10px;
+    visibility: hidden;
+
+    .from,
+    .before {
+      @include _768 {
+        max-width: 110px;
+      }
+      @include _1366 {
+        max-width: 95px;
+      }
+      border: none;
+      text-indent: 15px;
+      margin: 0 7px;
+      background: #efefef;
+    }
+  }
+
+  .contentActive {
+    visibility: visible;
+    z-index: 9999;
+    border-top: none;
+  }
+
+  .contentDark {
+    border-top: none;
+  }
+}
